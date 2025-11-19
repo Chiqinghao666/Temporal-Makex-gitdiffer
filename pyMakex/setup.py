@@ -2,7 +2,7 @@
 from setuptools import setup, Extension
 
 # define the extension module
-pyMakex = Extension('pyMakex',
+pyCFLogic = Extension('pyMakex',
                       language='c++',
                       sources=['pyMakex.cpp'],
                       extra_compile_args=['-lm -O3  -ffast-math']+['-fopenmp'],
@@ -13,4 +13,4 @@ pyMakex = Extension('pyMakex',
 # Run the setup
 setup(name='pyMakex',
       version='1.0',
-      ext_modules=[pyMakex])
+      ext_modules=[pyCFLogic])

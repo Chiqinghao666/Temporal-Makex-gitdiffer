@@ -6,8 +6,6 @@
 #include <string>
 #include <vector>
 #include <chrono>
-#include <fstream>
-#include <omp.h>
 #include "include/algorithm/REPMatch.h"
 #include "include/gundam/algorithm/dp_iso.h"
 #include "include/gundam/data_type/datatype.h"
@@ -305,6 +303,7 @@ static PyObject *REPMatch(PyObject *self, PyObject *args) {
   std::vector<std::pair<DataGraphVertexConstPtr, DataGraphVertexConstPtr>>
       positive_result, all_result;
   bool cache_flag = use_cache ? true : false;
+  auto t_begin = clock();
   int positive_count, all_count;
   if (save_result) {
     auto ret = Makex::REPMatchBasePTime(
@@ -320,6 +319,7 @@ static PyObject *REPMatch(PyObject *self, PyObject *args) {
     all_count = ret.second;
   }
 
+  auto t_end = clock();
   PyObject *ret = PyList_New(0);
 
   if (save_result) {
@@ -375,6 +375,7 @@ static PyObject *REPMatch_U_V(PyObject *self, PyObject *args) {
   std::vector<std::pair<DataGraphVertexConstPtr, DataGraphVertexConstPtr>>
       positive_result, all_result;
   bool cache_flag = use_cache ? true : false;
+  auto t_begin = clock();
   int positive_count, all_count;
 
   int match_flag;
@@ -779,7 +780,6 @@ static PyObject *PatternMatch(PyObject *self, PyObject *args) {
     };
     auto prune_callback = [](auto &match_state) { return false; };
     auto t_begin_sample = clock();
-    auto t_end_sample = clock();
 
     GUNDAM::DPISO<GUNDAM::MatchSemantics::kHomomorphism, Pattern, DataGraph>(
         pattern, data_graph_ptr->data_graph(), temp_candidate_set, match_state,
@@ -952,7 +952,7 @@ static PyObject *TestWithLargeFlag(PyObject *self, PyObject *args) {
     int who_is_pivot_label_ = 0;
     int rep_id = i;
     auto ret = Makex::REPMatchBasePTime_Pivot_Match(
-        rep_list[i], data_graph_ptr->data_graph(), ml_model, false, &pivot_match, who_is_pivot_label, &pivot_match_, who_is_pivot_label_,
+        rep_list[i], data_graph_ptr->data_graph(), ml_model, false,&pivot_match, who_is_pivot_label, &pivot_match_, who_is_pivot_label_,
         &positive_result, &all_result, rep_id);
     
     omp_set_lock(&predict_score_lock);

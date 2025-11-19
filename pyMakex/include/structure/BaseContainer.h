@@ -1,7 +1,7 @@
 #ifndef _BASE_CONTAINER_H
 #define _BASE_CONTAINER_H
 #include <vector>
-namespace Makex {
+namespace CFLogic {
 template <class BaseClass>
 class BaseContainer {
  private:
@@ -35,5 +35,5 @@ class BaseContainer {
     this->base_container_.push_back(base_ptr);
   }
 };
-}  // namespace Makex
+}  // namespace CFLogic
 #endif

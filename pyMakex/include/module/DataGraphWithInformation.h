@@ -4,7 +4,7 @@
 #include <set>
 
 #include "gundam/type_getter/vertex_handle.h"
-namespace Makex {
+namespace CFLogic {
 template <class DataGraph>
 class DataGraphWithInformation {
  public:
@@ -185,5 +185,5 @@ class DataGraphWithInformation {
   size_t positive_pair_num_ = 0, negative_pair_num_ = 0, ml_model_size_ = 0;
 };
 
-}  // namespace Makex
+}  // namespace CFLogic
 #endif

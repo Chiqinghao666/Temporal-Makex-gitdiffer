@@ -8,7 +8,7 @@
 
 #include "DataGraphWithInformation.h"
 #include "gundam/type_getter/vertex_handle.h"
-namespace Makex {
+namespace CFLogic {
 // Mine star to get RNN train data with root label is root_label
 template <class DataGraph>
 class StarMiner {
@@ -183,5 +183,5 @@ class StarMiner {
     }
   }
 };
-}  // namespace Makex
+}  // namespace CFLogic
 #endif

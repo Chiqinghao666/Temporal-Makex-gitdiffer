@@ -1,7 +1,7 @@
 #ifndef _PATTERN_WITH_PARA_H
 #define _PATTERN_WITH_PARA_H
 #include <cmath>
-namespace Makex {
+namespace CFLogic {
 class Parameter {
  public:
   double data, m, v, t;
@@ -39,5 +39,5 @@ class PatternWithParameter {
   double H_score;
   double prior_probability;
 };
-}  // namespace Makex
+}  // namespace CFLogic
 #endif
